@@ -1,0 +1,10 @@
+kube_version: "1.32.7"
+local_path_provisioner_enabled: true
+helm_enabled: true
+cert_manager_enabled: true
+
+# external LB
+apiserver_loadbalancer_domain_name: "158.160.197.73"
+loadbalancer_apiserver:
+   address: "158.160.197.73"
+   port: 6443
