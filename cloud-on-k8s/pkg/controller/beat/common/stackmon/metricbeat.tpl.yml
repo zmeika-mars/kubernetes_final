@@ -1,0 +1,17 @@
+metricbeat.modules:
+- module: beat
+  metricsets:
+    - stats
+    - state
+  period: 10s
+  hosts: ["{{ .URL }}"]
+  xpack.enabled: true
+http.enabled: false
+monitoring.enabled: false
+# if no associated Elasticsearch cluster UUID known or determinable,
+# monitored application will be treated as stand-alone without cluster_uuid.
+{{ with .ClusterUUID -}}
+monitoring.cluster_uuid: "{{ . }}"
+{{- end}}
+
+# Elasticsearch output configuration is generated and added here
